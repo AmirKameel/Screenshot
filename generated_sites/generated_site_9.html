@@ -1,0 +1,146 @@
+<html>
+<head>
+    <title>A_eye - Football Performance Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="font-roboto bg-gray-100 text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-blue-900 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="index.html" class="text-2xl font-bold">A_eye</a>
+            <div class="space-x-4">
+                <a href="index.html" class="hover:underline">Home</a>
+                <a href="about.html" class="hover:underline">About</a>
+                <a href="contact.html" class="hover:underline">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Home Page -->
+    <div id="home" class="container mx-auto py-16 px-4">
+        <section class="text-center">
+            <h1 class="text-4xl font-bold mb-4">Welcome to A_eye</h1>
+            <p class="text-lg mb-8">Your ultimate destination for football performance analysis.</p>
+            <a href="about.html" class="bg-blue-900 text-white py-2 px-6 rounded-full">Learn More</a>
+        </section>
+        <section class="mt-16">
+            <h2 class="text-3xl font-bold mb-4">Latest Analysis</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Analysis Item -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="https://placehold.co/400x250" alt="Detailed image of football performance analysis" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Player Performance: Messi</h3>
+                        <p class="text-gray-700">In-depth analysis of Messi's performance in the latest match.</p>
+                    </div>
+                </div>
+                <!-- Analysis Item -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="https://placehold.co/400x250" alt="Detailed image of football stats and graphs" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Team Strategy</h3>
+                        <p class="text-gray-700">Exploring the strategies and formations of top football teams.</p>
+                    </div>
+                </div>
+                <!-- Analysis Item -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="https://placehold.co/400x250" alt="Image showing football tactical considerations" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Match Predictions</h3>
+                        <p class="text-gray-700">Predictions and insights for upcoming matches.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- About Page -->
+    <div id="about" class="container mx-auto py-16 px-4 hidden">
+        <section class="text-center">
+            <h1 class="text-4xl font-bold mb-4">About Us</h1>
+            <p class="text-lg mb-8">A_eye is a platform dedicated to providing detailed analysis of football performances using advanced analytics and data.</p>
+        </section>
+        <section class="mt-16">
+            <h2 class="text-3xl font-bold mb-4">Our Mission</h2>
+            <p class="text-gray-700">To revolutionize the way football is analyzed and appreciated through the use of cutting-edge technologies and expert insights.</p>
+        </section>
+        <section class="mt-16">
+            <h2 class="text-3xl font-bold mb-4">Our Team</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Team Member -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden text-center">
+                    <img src="https://placehold.co/400x250" alt="Portrait of the team member" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">John Doe</h3>
+                        <p class="text-gray-700">Chief Analyst</p>
+                    </div>
+                </div>
+                <!-- Team Member -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden text-center">
+                    <img src="https://placehold.co/400x250" alt="Portrait of the team member" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Jane Smith</h3>
+                        <p class="text-gray-700">Lead Data Scientist</p>
+                    </div>
+                </div>
+                <!-- Team Member -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden text-center">
+                    <img src="https://placehold.co/400x250" alt="Portrait of the team member" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Emily Brown</h3>
+                        <p class="text-gray-700">Performance Coach</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Contact Page -->
+    <div id="contact" class="container mx-auto py-16 px-4 hidden">
+        <section class="text-center">
+            <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
+            <p class="text-lg mb-8">Have any questions or inquiries? Feel free to reach out to us.</p>
+        </section>
+        <section class="mt-16">
+            <form class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name" class="w-full px-3 py-2 border rounded-lg focus:ring focus:border-blue-300">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+                    <input type="email" id="email" placeholder="Your email" class="w-full px-3 py-2 border rounded-lg focus:ring focus:border-blue-300">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="Your message" class="w-full px-3 py-2 border rounded-lg focus:ring focus:border-blue-300"></textarea>
+                </div>
+                <button type="submit" class="bg-blue-900 text-white py-2 px-6 rounded-full">Send Message</button>
+            </form>
+        </section>
+    </div>
+    <footer class="bg-blue-900 text-white py-4 mt-16">
+        <div class="container mx-auto text-center">
+            &copy; 2023 A_eye. All Rights Reserved.
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = {
+                home: document.getElementById('home'),
+                about: document.getElementById('about'),
+                contact: document.getElementById('contact')
+            };
+            const getFileNameWithoutExtension = (url) => url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
+            const currentPage = getFileNameWithoutExtension(window.location.href);
+            Object.keys(sections).forEach(page => {
+                if (page === currentPage) {
+                    sections[page].classList.remove('hidden');
+                } else {
+                    sections[page].classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
