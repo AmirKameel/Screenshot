@@ -503,8 +503,7 @@ def send_message(state):
     generated_file_path = save_html_response(response_content)
     index += 1  # Increment the index after saving
 
-
-def save_html_response(content):
+def save_html_response(html_content):
     global index  # Ensure we use the global variable
 
     # Ensure the directory exists
@@ -514,24 +513,30 @@ def save_html_response(content):
     # Save the HTML content to a file
     file_path = f"generated_sites/generated_site_{index}.html"
     with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(content)
+        file.write(html_content)
+
     return file_path
 
-
 def view_generated_site(state):
-    global generated_file_path  # Ensure we use the global variable
+    global generated_file_path
 
-    if generated_file_path:
-        # Construct the local file URL using the absolute path to the generated HTML file
-        file_url = f"file://{os.path.realpath(generated_file_path)}"
+    if not generated_file_path:
+        notify(state, "error", "No generated file to view")
+        return
 
-        # Open the file URL in the default web browser
-        webbrowser.open(file_url)
-    else:
-        notify(state, "error", "No generated site found to display.")
+    # Generate a clickable link to view the generated HTML file
+    # We can use `webbrowser.open` to directly open the file in a browser or provide a link
+    generated_file_url = f"file://{os.path.abspath(generated_file_path)}"
 
-
-
+    # Display a link in the chat for the user to click and view the generated site
+    state.messages.append(
+        {
+            "role": "assistant",
+            "style": "assistant_message",
+            "content": f"Click [here]({generated_file_url}) to view the generated site.",
+        }
+    )
+    state.conv.update_content(state, create_conv(state))
 
 def upload_image(state):
     global index
