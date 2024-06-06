@@ -558,8 +558,10 @@ with tgb.Page() as page:
                     label="Upload an image",
                 )
 
-if __name__ == "__main__":
-    gui = Gui(page)
-    conv = gui.add_partial("")
-    gui.run(title="🤖Webmecano", dark_mode=False, margin="0px", debug=True)
+def run_server():
+    port = int(os.getenv("PORT", 1000))
+    gui = Gui()
+    gui.run(title="webmecano", port=port)
 
+if __name__ == "__main__":
+    run_server()
