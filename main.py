@@ -517,6 +517,9 @@ def save_html_response(html_content):
 
     return file_path
 
+import threading
+from http.server import SimpleHTTPRequestHandler, HTTPServer
+from urllib.parse import quote
 def view_generated_site(state):
     global generated_file_path
 
