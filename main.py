@@ -558,9 +558,12 @@ with tgb.Page() as page:
                     label="Upload an image",
                 )
 
+load_dotenv()
+
 def run_server():
-    port = int(os.getenv("PORT", 1000))
+    port = int(os.getenv("PORT", 5000))  # Use the PORT environment variable or default to 5000
     gui = Gui()
+    print(f"Running server on port {port}")
     gui.run(title="webmecano", port=port)
 
 if __name__ == "__main__":
