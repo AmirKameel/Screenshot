@@ -521,23 +521,27 @@ def view_generated_site(state):
     global generated_file_path
 
     if not generated_file_path:
-        notify(state, "error", "No generated file to view")
+        notify(state, "error", "No site has been generated yet.")
         return
 
-    # Generate a clickable link to view the generated HTML file
-    # We can use `webbrowser.open` to directly open the file in a browser or provide a link
-    generated_file_url = f"file://{os.path.abspath(generated_file_path)}"
+    # Use your domain or IP address here
+    domain = "https://webmecano5.onrender.com"  # Replace with your actual domain
+    # or
+    # domain = "192.168.1.100"  # Replace with your server's IP address
 
-    # Display a link in the chat for the user to click and view the generated site
+    # Generate the URL to access the file
+    file_name = os.path.basename(generated_file_path)
+    file_url = f"https://{domain}/generated_sites/{quote(file_name)}"
+    
+    # Add the clickable link to the chat
     state.messages.append(
         {
             "role": "assistant",
-            "style": "assistant_message",
-            "content": f"Click [here]({generated_file_url}) to view the generated site.",
+            "style": "link_message",
+            "content": f"[View Generated Site]({file_url})",
         }
     )
     state.conv.update_content(state, create_conv(state))
-
 def upload_image(state):
     global index
     image = Image.open(state.query_image_path)
