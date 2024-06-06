@@ -521,8 +521,12 @@ def save_html_response(content):
 def view_generated_site(state):
     global generated_file_path  # Ensure we use the global variable
 
-    if os.path.exists(generated_file_path):
-        webbrowser.open('file://' + os.path.realpath(generated_file_path))
+    if generated_file_path:
+        # Construct the local file URL using the absolute path to the generated HTML file
+        file_url = f"file://{os.path.realpath(generated_file_path)}"
+
+        # Open the file URL in the default web browser
+        webbrowser.open(file_url)
     else:
         notify(state, "error", "No generated site found to display.")
 
