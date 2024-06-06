@@ -381,7 +381,7 @@ just return the code without any explainition. Do not include markdown "```" or 
         {
             "role": "assistant",
             "style": "assistant_message",
-            "content": "Hi, Frontend developer! please provide your screenshot",
+            "content": "hi",
         },
     ]
     state.gpt_messages = [initial_instruction]
