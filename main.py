@@ -399,7 +399,7 @@ def create_conv(state):
             text = message["content"].replace("<br>", "\n").replace('"', "'")
             messages_dict[f"message_{i}"] = text
             tgb.text(
-                "{messages_dict['" + f"message_{i}" + "'] if messages_dict else ''}",
+                "{messages_dict.get('" + f"message_{i}" + "', '')}",
                 class_name=f"message_base {message['style']}",
                 mode="md",
             )
@@ -408,7 +408,7 @@ def create_conv(state):
                     "View Generated Site",
                     class_name="fullwidth plain",
                     id=f"view_site_button_{i}",
-                    on_action=get_generated_site,
+                    on_action=view_generated_site,
                 )
     state.messages_dict = messages_dict
     return conversation
