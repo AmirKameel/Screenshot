@@ -11,6 +11,7 @@ import taipy.gui.builder as tgb
 
 from PIL import Image
 
+app = Flask(__name__)
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -467,6 +468,7 @@ def query_gpt4o(state):
     return response_json["choices"][0]["message"]["content"].replace("\n\n", "\n")
 
 
+
 def save_html_to_file(html_content):
     global generated_file_path
     with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_file:
@@ -520,18 +522,22 @@ def upload_image(state):
     index += 1
 
 def reset_chat(state):
+    global generated_file_path
     state.messages = []
     state.gpt_messages = []
     state.query_message = ""
     state.query_image_path = ""
     state.conv.update_content(state, create_conv(state))
+    generated_file_path = ""  # Reset generated file path
     on_init(state)
 
-def view_generated_site(state, id):
-    if generated_file_path:
-        webbrowser.open(f"file://{generated_file_path}")
+@app.route('/generated_site')
+def get_generated_site():
+    global generated_file_path
+    if os.path.exists(generated_file_path):
+        return send_file(generated_file_path, mimetype='text/html')
     else:
-        notify(state, "info", "No file has been generated yet.")
+        return "No generated file found"
 
 with tgb.Page() as page:
     with tgb.layout(columns="300px 1"):
