@@ -465,6 +465,13 @@ def query_gpt4o(state):
     return response_json["choices"][0]["message"]["content"].replace("\n\n", "\n")
 
 
+def save_html_to_file(html_content):
+    global generated_file_path
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_file:
+        temp_file.write(html_content.encode('utf-8'))
+        temp_file_path = temp_file.name
+    generated_file_path = temp_file_path
+
 def send_message(state):
     global index
     global generated_file_path  # Ensure we use the global variable
@@ -500,51 +507,8 @@ def send_message(state):
     state.query_image_path = ""
 
     # Save the response content to an HTML file
-    generated_file_path = save_html_response(response_content)
-    index += 1  # Increment the index after saving
+    save_html_to_file(response_content)
 
-def save_html_response(html_content):
-    global index  # Ensure we use the global variable
-
-    # Ensure the directory exists
-    if not os.path.exists('generated_sites'):
-        os.makedirs('generated_sites')
-
-    # Save the HTML content to a file
-    file_path = f"generated_sites/generated_site_{index}.html"
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(html_content)
-
-    return file_path
-
-import threading
-from http.server import SimpleHTTPRequestHandler, HTTPServer
-from urllib.parse import quote
-def view_generated_site(state):
-    global generated_file_path
-
-    if not generated_file_path:
-        notify(state, "error", "No site has been generated yet.")
-        return
-
-    # Use your domain or IP address here
-    domain = "https://webmecano5.onrender.com"  # Replace with your actual domain
-    # or
-    # domain = "192.168.1.100"  # Replace with your server's IP address
-
-    # Generate the URL to access the file
-    file_name = os.path.basename(generated_file_path)
-    file_url = f"https://{domain}/generated_sites/{quote(file_name)}"
-    
-    # Add the clickable link to the chat
-    state.messages.append(
-        {
-            "role": "assistant",
-            "style": "link_message",
-            "content": f"[View Generated Site]({file_url})",
-        }
-    )
-    state.conv.update_content(state, create_conv(state))
 def upload_image(state):
     global index
     image = Image.open(state.query_image_path)
@@ -552,7 +516,6 @@ def upload_image(state):
     image.save(f"images/example_{index}.png")
     state.query_image_path = f"images/example_{index}.png"
     index += 1
-
 
 def reset_chat(state):
     state.messages = []
@@ -562,6 +525,11 @@ def reset_chat(state):
     state.conv.update_content(state, create_conv(state))
     on_init(state)
 
+def view_generated_site(state, id):
+    if generated_file_path:
+        webbrowser.open(f"file://{generated_file_path}")
+    else:
+        notify(state, "info", "No file has been generated yet.")
 
 with tgb.Page() as page:
     with tgb.layout(columns="300px 1"):
