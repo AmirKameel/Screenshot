@@ -536,12 +536,14 @@ def get_generated_site():
     global generated_file_path
     if os.path.exists(generated_file_path):
         try:
-            return send_file(generated_file_path, mimetype='text/html')
+            with open(generated_file_path, 'rb') as file:
+                return file.read()
         except Exception as e:
             print(f"Error serving generated site: {e}")
             return f"Error serving generated site: {e}"
     else:
         return "No generated file found"
+
 
 
 with tgb.Page() as page:
