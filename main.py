@@ -535,9 +535,14 @@ def reset_chat(state):
 def get_generated_site():
     global generated_file_path
     if os.path.exists(generated_file_path):
-        return send_file(generated_file_path, mimetype='text/html')
+        try:
+            return send_file(generated_file_path, mimetype='text/html')
+        except Exception as e:
+            print(f"Error serving generated site: {e}")
+            return f"Error serving generated site: {e}"
     else:
         return "No generated file found"
+
 
 with tgb.Page() as page:
     with tgb.layout(columns="300px 1"):
