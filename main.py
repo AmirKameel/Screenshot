@@ -572,7 +572,7 @@ def view_generated_site(state):
      paths = []
      for path in generated_file_paths:
          if os.path.exists(path):
-             paths.append(f'https://chatbot.webmeccano.com/generated_sites/'+os.path.basename(path))
+             paths.append(f'https://webmecano.onrender.com/generated_sites/'+os.path.basename(path))
          else:
              notify(state, "error", f"Generated file {path} not found.")
      if paths:
