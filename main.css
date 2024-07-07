@@ -1,10 +1,10 @@
 /* Base styles for all chat messages */
 .message_base {
     font-family: 'Lato';
-    margin: 20px 400px 0px 20px;
+    margin: 20px; /* Adjust margin to a uniform value */
     position: relative;
     display: inline-block;
-    padding: 0px 20px 0px 20px;
+    padding: 10px; /* Adjust padding to a uniform value */
     border-radius: 20px;
     max-width: 90%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -57,4 +57,21 @@ hr {
     border: 1.5px solid #b5b5b5;
     border-radius: 7px;
     background-color: #b5b5b5;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    /* Adjustments for smaller screens */
+    .sidebar {
+        width: 100%; /* Make sidebar take full width on smaller screens */
+    }
+
+    .image_preview {
+        width: 100%; /* Ensure image preview takes full width on smaller screens */
+    }
+
+    .user_message {
+        margin-left: 10%; /* Adjust margin for user messages on smaller screens */
+        margin-right: 10px;
+    }
 }
