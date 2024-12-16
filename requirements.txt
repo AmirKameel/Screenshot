@@ -2,3 +2,4 @@ flask
 flasgger
 fitz
 gunicorn
+flask_restful
