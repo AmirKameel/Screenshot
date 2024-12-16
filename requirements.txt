@@ -3,4 +3,3 @@ flasgger
 PyMuPDF
 gunicorn
 flask_restful
-os
