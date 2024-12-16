@@ -1,5 +1,5 @@
 flask
 flasgger
-fitz
+PyMuPDF
 gunicorn
 flask_restful
